@@ -1,31 +1,31 @@
-import React from 'react';
+import React from "react";
 
-const ProductCard = ({product}) => {
-    console.log(product);
-    const{name,category,price,material,image,description }= product
-    return (
-        <div>
-            <div className="card bg-base-100 w-96 shadow-sm">
-  <figure>
-    <img
-      src={image}
-      alt="Shoes" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">Card Title</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
+const ProductCard = ({ product }) => {
+  
+  const { name, category, price,  image, description } = product;
+  return (
+    <div>
+      <div className="card bg-base-100  shadow-sm hover:scale-105 transition ease-in-out ">
+        <figure className="h-48 overflow-hidden">
+          <img className="w-full object-cover" src={image} alt="Shoes" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{name}</h2>
+          <p>{description}</p>
+          <div className="flex justify-between items-center">
+            <p className="flex-6 font-bold">{category}</p>
+            <p className="flex-1 font-semibold">${price}</p>
+          </div>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Buy Now</button>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default ProductCard;
-
-
 
 // "id": 1,
 //     "name": "Modern Velvet Sofa",

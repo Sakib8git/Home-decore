@@ -26,20 +26,20 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow "
             >
-              <li>
-                <NavLink to="/">Bome</NavLink>
+              <li >
+                <NavLink  to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/product">Products</NavLink>
+                <NavLink  to="/product">Products</NavLink>
               </li>
               <li>
                 <NavLink to="/wishlist">Wishlist</NavLink>
               </li>
             </ul>
           </div>
-          <Link to="/" className=" text-xl">
+          <Link to="/" className=" text-2xl font-bold">
             HomeDecore🏡
           </Link>
         </div>
@@ -47,13 +47,13 @@ const NavBar = () => {
         <div className="navbar-end">
           <ul className="menu menu-horizontal px-1 hidden lg:flex">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink className="text-xl" to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/product">Products</NavLink>
+              <NavLink className="text-xl" to="/product">Products</NavLink>
             </li>
             <li>
-              <NavLink to="/wishlist">Wishlist</NavLink>
+              <NavLink className="text-xl" to="/wishlist">Wishlist</NavLink>
             </li>
           </ul>
           <a className="btn">Button</a>
