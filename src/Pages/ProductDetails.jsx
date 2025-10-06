@@ -1,11 +1,70 @@
-import React from 'react';
+import React from "react";
+import { useParams } from "react-router";
+import useProducts from "../Hooks/useProducts";
 
 const ProductDetails = () => {
-    return (
-        <div>
-            
+  const { id } = useParams();
+  const productId = parseInt(id);
+  const { products, loading, error } = useProducts();
+
+  const detailsOfProduct = products.find((p) => p.id === productId);
+
+  if (loading) return <p>Loding.....</p>;
+  const { name, category, price, image, description, dimensions, material } =
+    detailsOfProduct;
+
+const handleWishlist= ()=>{
+    const existingList =JSON.parse(localStorage.getItem("wishlist"))
+    let updatList =[]
+    if(existingList){
+const isDuplicate = existingList.some(p=> p.id === detailsOfProduct.id)
+if(isDuplicate)return alert("same")
+        updatList = [...existingList, detailsOfProduct]
+    }else{
+        updatList.push(detailsOfProduct)
+    }
+    localStorage.setItem("wishlist" , JSON.stringify(updatList))
+}
+
+
+  return (
+    <div>
+      <div className="card bg-base-100 shadow-sm">
+        <figure>
+          <img
+            className="w-full rounded-2xl hover:scale-110 transition ease-in-out"
+            src={image}
+            alt="Shoes"
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title font-bold text-3xl">{name}</h2>
+          <p>{description}</p>
+          <div className="flex">
+            <p className="flex-20">{category}</p>
+            <p>${price}</p>
+          </div>
+          <div className="flex">
+            <p className="flex-20">{material}</p>
+            <p>${dimensions}</p>
+          </div>
+          <div className="card-actions justify-end">
+            <button onClick={handleWishlist} className="btn btn-primary">Add to Wishlist</button>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default ProductDetails;
+
+// "id": 1,
+//     "name": "Modern Velvet Sofa",
+//     "category": "Furniture",
+//     "price": 520,
+//     "material": "Velvet, Wood",
+//     "dimensions": "84 x 35 x 33 in",
+//     "stock": true,
+//     "image": "https://i.ibb.co.com/tM7pbxwx/Modern-Velvet-Sofa.jpg",
+//     "description":

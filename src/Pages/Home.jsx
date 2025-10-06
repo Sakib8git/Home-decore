@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import ProductCard from "../Components/ProductCard";
 import Product from "./Product";
 
