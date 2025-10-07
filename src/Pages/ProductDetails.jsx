@@ -13,26 +13,27 @@ const ProductDetails = () => {
   const { name, category, price, image, description, dimensions, material } =
     detailsOfProduct;
 
-const handleWishlist= ()=>{
-    const existingList =JSON.parse(localStorage.getItem("wishlist"))
-    let updatList =[]
-    if(existingList){
-const isDuplicate = existingList.some(p=> p.id === detailsOfProduct.id)
-if(isDuplicate)return alert("same")
-        updatList = [...existingList, detailsOfProduct]
-    }else{
-        updatList.push(detailsOfProduct)
+  const handleWishlist = () => {
+    const existingList = JSON.parse(localStorage.getItem("wishlist"));
+    let updatList = [];
+    if (existingList) {
+      const isDuplicate = existingList.some(
+        (p) => p.id === detailsOfProduct.id
+      );
+      if (isDuplicate) return alert("same");
+      updatList = [...existingList, detailsOfProduct];
+    } else {
+      updatList.push(detailsOfProduct);
     }
-    localStorage.setItem("wishlist" , JSON.stringify(updatList))
-}
-
+    localStorage.setItem("wishlist", JSON.stringify(updatList));
+  };
 
   return (
     <div>
       <div className="card bg-base-100 shadow-sm">
         <figure>
           <img
-            className="w-full rounded-2xl hover:scale-110 transition ease-in-out"
+            className="w-[500px] rounded-2xl hover:scale-110 transition ease-in-out"
             src={image}
             alt="Shoes"
           />
@@ -49,7 +50,9 @@ if(isDuplicate)return alert("same")
             <p>${dimensions}</p>
           </div>
           <div className="card-actions justify-end">
-            <button onClick={handleWishlist} className="btn btn-primary">Add to Wishlist</button>
+            <button onClick={handleWishlist} className="btn btn-primary">
+              Add to Wishlist
+            </button>
           </div>
         </div>
       </div>
