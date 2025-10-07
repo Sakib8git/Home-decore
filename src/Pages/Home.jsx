@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <div className="mb-8 flex justify-between items-center">
-        <h1>Fetured Products</h1>
+        <h1 className="text-4xl">Fetured Products</h1>
         <Link className="btn mt-5" to="/product">
           See All Products
         </Link>
