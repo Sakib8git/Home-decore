@@ -4,12 +4,13 @@ import ProductCard from "../Components/ProductCard";
 import Product from "./Product";
 
 import useProducts from "../Hooks/useProducts";
+import LoadingSpiner from "../Components/LoadingSpiner";
 
 const Home = () => {
   // const promiseProducts = useLoaderData();
 
-  const { products, loading, error } = useProducts();
-  
+  const { products, loading } = useProducts();
+
   const fetureProducts = products.slice(0, 6);
   return (
     <div>
@@ -21,9 +22,13 @@ const Home = () => {
       </div>
       {/* home--------- */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {fetureProducts.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
-        ))}
+        {loading ? (
+          <LoadingSpiner count={10}></LoadingSpiner>
+        ) : (
+          fetureProducts.map((product) => (
+            <ProductCard key={product.id} product={product}></ProductCard>
+          ))
+        )}
       </div>
     </div>
   );

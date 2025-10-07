@@ -11,15 +11,13 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { lodeWishlist } from "../Utils/localStorage";
 
 const Wishlist = () => {
-  const [wishlist, setwishList] = useState([]);
+  const [wishlist, setwishList] = useState(()=>lodeWishlist() );
   const [sorted, setSorted] = useState("none");
 
-  useEffect(() => {
-    const saveList = JSON.parse(localStorage.getItem("wishlist"));
-    if (saveList) setwishList(saveList);
-  }, []);
+  
 
   if(!wishlist.length) return <p>No Data</p>
   // !note:-------------------------sorting--------

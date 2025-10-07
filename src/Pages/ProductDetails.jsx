@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import useProducts from "../Hooks/useProducts";
-
+ import { ToastContainer, toast } from 'react-toastify';
 const ProductDetails = () => {
   const { id } = useParams();
   const productId = parseInt(id);
@@ -20,7 +20,7 @@ const ProductDetails = () => {
       const isDuplicate = existingList.some(
         (p) => p.id === detailsOfProduct.id
       );
-      if (isDuplicate) return alert("same");
+      if (isDuplicate) return toast("same");
       updatList = [...existingList, detailsOfProduct];
     } else {
       updatList.push(detailsOfProduct);
@@ -56,18 +56,10 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
 
 export default ProductDetails;
 
-// "id": 1,
-//     "name": "Modern Velvet Sofa",
-//     "category": "Furniture",
-//     "price": 520,
-//     "material": "Velvet, Wood",
-//     "dimensions": "84 x 35 x 33 in",
-//     "stock": true,
-//     "image": "https://i.ibb.co.com/tM7pbxwx/Modern-Velvet-Sofa.jpg",
-//     "description":
